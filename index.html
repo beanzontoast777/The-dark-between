@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dark Between the Stars</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2000&auto=format&fit=crop">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/MotionPathPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Dark Between</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="known.html">The Known</a></li>
+                <li><a href="unknown.html">The Unknown</a></li>
+                <li><a href="archive.html">Archive</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="hero">
+        <canvas id="starfield"></canvas>
+
+        <div class="hero-state" id="hero-loading" style="display: none;">
+            <div class="skeleton-loader"></div>
+            <p>Receiving light from the cosmos...</p>
+        </div>
+        
+        <div class="hero-state" id="hero-error" style="display: none;">
+            <p>Signal lost. The universe is quiet.</p>
+            <button onclick="fetchNasaData()" class="retry-btn">Try again</button>
+        </div>
+
+        <div class="hero-state" id="hero-empty" style="display: none;">
+            <p>No image data found for today. The dark remains.</p>
+        </div>
+
+        <div class="hero-content" id="hero-content" style="opacity: 0;">
+            <h1 class="hero-title" id="hero-title" aria-label="The Dark Between The Stars">
+                <span class="line">The Dark</span>
+                <span class="line">Between</span>
+                <span class="line">The Stars</span>
+            </h1>
+            <p class="hero-subtitle" id="hero-subtitle">The more we learn, the less we understand.</p>
+            <a href="#manifesto" class="scroll-cue" aria-label="Scroll down">
+                <span class="arrow"></span>
+            </a>
+        </div>
+        
+        <div class="hero-image-overlay" id="hero-image"></div>
+    </header>
+
+    <!-- Manifesto Section -->
+    <section class="manifesto" id="manifesto">
+        <div class="container">
+            <p class="manifesto-text">
+                We map the universe, yet it remains unmapped. We build telescopes to see further, only to find more darkness. This is a space to sit with the questions we can't yet answer.
+            </p>
+        </div>
+    </section>
+
+    <!-- Split Paths Section -->
+    <section class="split-paths">
+        <a href="known.html" class="path-card known-card">
+            <svg class="spiral-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M100,100 
+                         m0,0 a5,5 0 1,1 10,0 
+                         a10,10 0 1,1 -20,0 
+                         a15,15 0 1,1 30,0 
+                         a20,20 0 1,1 -40,0 
+                         a25,25 0 1,1 50,0 
+                         a30,30 0 1,1 -60,0 
+                         a35,35 0 1,1 70,0 
+                         a40,40 0 1,1 -80,0 
+                         a45,45 0 1,1 90,0 
+                         a50,50 0 1,1 -100,0" 
+                      fill="none" 
+                      stroke="rgba(200, 200, 210, 0.10)" 
+                      stroke-width="1.2" 
+                      stroke-linecap="round"/>
+            </svg>
+            <h2>The Known</h2>
+            <p>What we have discovered so far.</p>
+            <span class="arrow-link">Explore &rarr;</span>
+        </a>
+        <a href="unknown.html" class="path-card unknown-card">
+            <svg class="spiral-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M100,100 
+                         m0,0 a5,5 0 1,1 10,0 
+                         a10,10 0 1,1 -20,0 
+                         a15,15 0 1,1 30,0 
+                         a20,20 0 1,1 -40,0 
+                         a25,25 0 1,1 50,0 
+                         a30,30 0 1,1 -60,0 
+                         a35,35 0 1,1 70,0 
+                         a40,40 0 1,1 -80,0 
+                         a45,45 0 1,1 90,0 
+                         a50,50 0 1,1 -100,0" 
+                      fill="none" 
+                      stroke="rgba(200, 200, 210, 0.10)"
+                      stroke-width="1.2" 
+                      stroke-linecap="round"/>
+            </svg>
+            <h2>The Unknown</h2>
+            <p>The mysteries that remain.</p>
+            <span class="arrow-link">Contemplate &rarr;</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 The Dark Between the Stars. Data provided by NASA.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
