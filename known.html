@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Known | The Dark Between the Stars</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">Dark Between</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="known.html" class="active">The Known</a></li>
+                <li><a href="unknown.html">The Unknown</a></li>
+                <li><a href="archive.html">Archive</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header known-header">
+        <div class="container">
+            <h1 class="page-title">The Known</h1>
+            <p class="page-subtitle">What we have discovered so far. The light we can measure, the distances we can calculate.</p>
+        </div>
+    </header>
+
+    <!-- Intro -->
+    <section class="content-section">
+        <div class="container">
+            <div class="text-block">
+                <p>Everything we know about the universe fits into a single book — a very large book, but a single one. It contains the laws of gravity, the spectrum of light, the age of the stars, the dance of galaxies.</p>
+                <p>This page is a small window into that book. Not a summary — a sample. A reminder that the Known is not small. It is the foundation on which every question is built.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Discoveries -->
+    <section class="content-section known-discovery-section">
+        <div class="container">
+            <h2 class="section-title">Recent Discoveries</h2>
+            
+            <!-- API Loading State -->
+            <div id="cards-loading" class="api-loading">
+                <div class="skeleton-loader"></div>
+                <p>Gathering light from the archive...</p>
+            </div>
+
+            <!-- API Error State -->
+            <div id="cards-error" class="api-error" style="display: none;">
+                <p>Unable to retrieve archive data.</p>
+                <button onclick="fetchArchiveCards()" class="retry-btn">Try again</button>
+            </div>
+
+            <!-- API Success Grid -->
+            <div class="cards-grid" id="cards-grid" style="display: none;"></div>
+        </div>
+    </section>
+
+    <!-- Facts Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="fact-block">
+                <h2 class="section-title">Light Years</h2>
+                <p class="fact-text">A light year is the distance light travels in one Earth year. It is about 9.46 trillion kilometres. When we look at a star, we are looking into the past. The light from Proxima Centauri, our nearest stellar neighbour, takes 4.24 years to reach us. We see it as it was, not as it is.</p>
+                <div class="fact-stats">
+                    <div class="stat">
+                        <span class="stat-number">9.46T</span>
+                        <span class="stat-label">kilometres per light year</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4.24</span>
+                        <span class="stat-label">years to Proxima Centauri</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">13.8B</span>
+                        <span class="stat-label">years of observable light</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-block">
+                <h2 class="section-title">The Milky Way</h2>
+                <p class="fact-text">Our home galaxy contains over 100 billion stars. It is a barred spiral galaxy, and we sit about 26,000 light years from the centre. Yet, the entire Milky Way is just one of an estimated 200 billion galaxies in the observable universe.</p>
+                <div class="fact-stats">
+                    <div class="stat">
+                        <span class="stat-number">100B</span>
+                        <span class="stat-label">stars in our galaxy</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">26,000</span>
+                        <span class="stat-label">light years to the centre</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">200B</span>
+                        <span class="stat-label">galaxies in the observable universe</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing thought -->
+    <section class="content-section closing-thought">
+        <div class="container">
+            <div class="text-block">
+                <p>Every fact on this page was once unknown. Every measurement was once a mystery.</p>
+                <p>The Known is not a destination. It is the ground beneath our feet — the small lit circle in an otherwise dark room. And the more we learn, the larger the circumference of the dark becomes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Next Step -->
+    <section class="next-step-section">
+        <div class="container">
+            <a href="unknown.html" class="next-step-link">
+                <span class="next-step-label">Continue</span>
+                <span class="next-step-text">Enter the Unknown &rarr;</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 The Dark Between the Stars. Data provided by NASA.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
